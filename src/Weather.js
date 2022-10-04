@@ -88,7 +88,7 @@ export default function Weather() {
         <div className="forecast-block"></div>
       </div>
       <div className="footer">
-        <a href="https://github.com/hexadecimalya/my-weather-widget">
+        <a href="https://github.com/hexadecimalya/weather-react">
           Open-source code
         </a>{" "}
         by Alina Pantina
