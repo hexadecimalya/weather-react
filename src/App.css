@@ -1,0 +1,111 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+body {
+  background-color: #fffafa;
+}
+
+.main-widget {
+  max-width: 650px;
+  background-color: #d2e3fa;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 10px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.daily-temp {
+  font-size: 3.5rem;
+}
+
+.weather-active-tab {
+  margin: 0 1rem;
+  border-radius: 10px;
+}
+
+.celsius-link {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1rem;
+}
+
+.forecast-parameters {
+  list-style: none;
+  padding: 0;
+  color: rgb(112, 112, 128);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.current-location {
+  display: flex;
+  margin-bottom: 0.5rem;
+  color: #818080;
+  text-decoration: underline;
+  border: none;
+  background-color: #d2e3fa;
+}
+
+.footer {
+  text-align: center;
+}
+
+.current-city {
+  font-weight: 600;
+}
+
+.daily-temp .weather-description {
+  font-size: 1rem;
+  text-decoration: overline;
+}
+
+.forecast-block .row {
+  text-align: center;
+  justify-content: space-around;
+}
+
+.forecast-block .forecast-element {
+  width: 6rem;
+}
+
+.forecast-block .forecast-element:hover {
+  background-color: #bbd5fa;
+  border-radius: 10px;
+}
+.forecast-temp-min {
+  color: #818080;
+}
+
+.forecast-date {
+  font-weight: 600;
+}
+
+@media (max-width: 583px) {
+  .forecast-block .forecast-element {
+    padding-bottom: 1.5rem;
+    width: 7rem;
+  }
+}
+
+@media (max-width: 429px) {
+  .daily-temp {
+    font-size: 2.5rem;
+  }
+
+  .daily-temp .weather-description {
+    font-size: 0.8rem;
+    text-decoration: overline;
+  }
+
+  .forecast-parameters {
+    font-size: 0.8rem;
+  }
+
+  .datetime {
+    font-size: 1rem;
+  }
+}
