@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
 import WeatherParameters from "./WeatherParameters";
-import WeatherIcon from "./WeatherIcon";
 
 export default function Weather(props) {
   //let apiKey = "dc18df010a99b3f0fe5d81a06ea6f2c6";
@@ -54,7 +53,6 @@ export default function Weather(props) {
   }
 
   function searchCity() {
-    
     const apiKey = "c92aa008c831e4682122a5ffc70b2cbf";
     let apiUrlCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
     axios.get(apiUrlCity).then(getStatsByCity).catch(cityNotFound);
@@ -99,8 +97,8 @@ export default function Weather(props) {
                 <FormattedDate date={parameters.date} />
               </div>
             </div>
-           
-              <WeatherParameters data={parameters} />
+
+            <WeatherParameters data={parameters} />
           </div>
           <hr />
           <div className="forecast-block"></div>

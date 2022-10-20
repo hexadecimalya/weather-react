@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function WeatherTemperature(props) {
   const [unit, setUnit] = useState("C");
-  let temperature = unit === "C" ? props.celcius : props.fahrenheit
+  let temperature = unit === "C" ? props.celcius : props.fahrenheit;
 
   function convertTemp(e) {
     e.preventDefault();
