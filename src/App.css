@@ -58,8 +58,9 @@ body {
   text-decoration: overline;
 }
 
-.forecast-block .row {
+.forecast-block  {
   text-align: center;
+  display: flex;
   justify-content: space-around;
 }
 
@@ -71,6 +72,7 @@ body {
   background-color: #bbd5fa;
   border-radius: 10px;
 }
+
 .forecast-temp-min {
   color: #818080;
 }

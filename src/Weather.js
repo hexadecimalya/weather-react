@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
 import WeatherParameters from "./WeatherParameters";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
   //let apiKey = "dc18df010a99b3f0fe5d81a06ea6f2c6";
@@ -9,17 +10,8 @@ export default function Weather(props) {
   const [parameters, setParameters] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
 
-  //searchCity(city);
+  const apiKey = "c92aa008c831e4682122a5ffc70b2cbf";
 
-  // console.log(apiUrlCity);
-  // let apiUrlImage
-  // let apiUrlCoords
-  // let setImageByCondition = (condition) => {
-  //   let imageCode = condition.weather[0].icon;
-  //   let imageUrl = `http://openweathermap.org/img/wn/${imageCode}@2x.png`;
-  //   // return `<img src="${imageUrl}" alt="" />`;
-  //   return `hello`;
-  // }
   const celsiusToFar = (celsius) => {
     return Math.round((celsius * 9) / 5 + 32);
   };
@@ -33,7 +25,6 @@ export default function Weather(props) {
       temperature_f: Math.round(celsiusToFar(par.main.temp)),
       pressure: par.main.pressure,
       humidity: par.main.humidity,
-      //setInterval(FormattedDate, 10000);
       date: new Date(par.dt * 1000),
       description: par.weather[0].description,
       iconUrl: `http://openweathermap.org/img/wn/${par.weather[0].icon}@2x.png`,
@@ -41,6 +32,24 @@ export default function Weather(props) {
       city: par.name,
     });
     setCity("");
+  }
+
+  function handleSuccessPosition(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let apiUrlCoords = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+    axios.get(apiUrlCoords).then(getStatsByCity);
+  }
+
+  function positionFailed() {
+    console.log("Failed to get position");
+  }
+
+  function getPosition() {
+    navigator.geolocation.getCurrentPosition(
+      handleSuccessPosition,
+      positionFailed
+    );
   }
 
   function handleSubmit(event) {
@@ -53,7 +62,6 @@ export default function Weather(props) {
   }
 
   function searchCity() {
-    const apiKey = "c92aa008c831e4682122a5ffc70b2cbf";
     let apiUrlCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
     axios.get(apiUrlCity).then(getStatsByCity).catch(cityNotFound);
   }
@@ -72,7 +80,9 @@ export default function Weather(props) {
       <div className="Weather">
         <div className="container main-widget shadow p-3 mb-2 rounded">
           <div className="wrapper">
-            <button className="current-location">📍Set current location</button>
+            <button className="current-location" onClick={getPosition}>
+              📍Set current location
+            </button>
           </div>
           <div className="Search">
             <form onSubmit={handleSubmit} id="search-form">
@@ -101,7 +111,7 @@ export default function Weather(props) {
             <WeatherParameters data={parameters} />
           </div>
           <hr />
-          <div className="forecast-block"></div>
+          <WeatherForecast coords={parameters.coordinates} />
         </div>
         <div className="footer">
           <a href="https://github.com/hexadecimalya/weather-react">

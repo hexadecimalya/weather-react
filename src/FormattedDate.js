@@ -29,19 +29,11 @@ export default function FormattedDate(props) {
   let day = props.date.getDate();
   let dayOfWeek = daysOfWeek[props.date.getDay()];
   let hours = props.date.getHours();
-  console.log(dayOfWeek);
   let minutes = props.date.getMinutes();
 
   minutes = minutes < 10 ? "0" + minutes : minutes;
   hours = hours < 10 ? "0" + hours : hours;
-
-//   function setCurrentDateTime() {
-//     let dateTimeBlock = document.querySelector("#current-datetime");
-//     let currentDate = new Date();
-//     let dateTime = formatDateTime(currentDate);
-//     dateTimeBlock.innerHTML = dateTime;
-//   }
-
+  
   return (
     <div>
       {month} {day}, {dayOfWeek} | {hours}:{minutes}
