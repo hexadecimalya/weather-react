@@ -20,14 +20,12 @@ export default function WeatherForecastDay(props) {
 
   let imgUrl = `http://openweathermap.org/img/wn/${props.data.weather[0].icon}.png`;
   return (
-    <div className="WeatherForecastDay">
-      <div className="col-2 forecast-element">
-        <div className="forecast-date">{day()}</div>
-        <img src={imgUrl} alt="" width="60" />
-        <div className="forecast-temps">
-          <span className="forecast-temp-max">{maxT()}° </span> |
-          <span className="forecast-temp-min"> {minT()}° </span>
-        </div>
+    <div className="WeatherForecastDay col-2 forecast-element">
+      <div className="forecast-date">{day()}</div>
+      <img src={imgUrl} alt="" width="60" />
+      <div className="forecast-temps">
+        <span className="forecast-temp-max">{maxT()}° </span> |
+        <span className="forecast-temp-min"> {minT()}° </span>
       </div>
     </div>
   );

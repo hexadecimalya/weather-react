@@ -25,11 +25,13 @@ export default function WeatherForecast(props) {
   } else {
     return (
       <div className="WeatherForecast forecast-block">
+        <div className="row">
         {forecast.map(function (dailyForecast, index) {
           if (index < 6) {
             return <WeatherForecastDay data={dailyForecast} />;
           }
         })}
+        </div>
       </div>
     );
   }
