@@ -26,11 +26,16 @@ export default function WeatherForecast(props) {
     return (
       <div className="WeatherForecast forecast-block">
         <div className="row">
-        {forecast.map(function (dailyForecast, index) {
-          if (index < 6) {
-            return <WeatherForecastDay data={dailyForecast} />;
-          }
-        })}
+          {forecast.map(function (dailyForecast, index) {
+            if (index < 6) {
+              return (
+                <div className="col-2 forecast-element" key={index}>
+                  <WeatherForecastDay data={dailyForecast} />
+                </div>
+              );
+            }
+            return null;
+          })}
         </div>
       </div>
     );
